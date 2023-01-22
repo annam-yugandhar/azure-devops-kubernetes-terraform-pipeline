@@ -22,13 +22,15 @@ jobs:
     displayName: 'Run a one-line script'
 
 - job: job3
+  dependsOn: 
+  - job1
+  - job2
   steps:
   - script: echo Hello, guys this is job3 script!
     displayName: 'Run a one-line script'
 
 - job: job4
   dependsOn:
-  - job2
   - job1
   steps:
   - script: echo Hello, guys this is job4 script!
