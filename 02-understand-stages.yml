@@ -42,6 +42,8 @@ stages:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
             ArtifactName: 'azure'
 
+        - bash: echo we have created new release pipeline
+
   #   - job: Second_job
   #     steps:
   #       - bash: echo second job in Build stage
