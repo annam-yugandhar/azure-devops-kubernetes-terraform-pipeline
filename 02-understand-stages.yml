@@ -6,16 +6,18 @@ pool:
 
 stages:
   - stage: Build
+    variables:
+      env: Build_Stage
     jobs:
     - job: First_job
       steps:
-        - bash: echo first job in Build stage
+        - bash: echo first job in $(env)
         - bash: echo $(PipelineLevelVariable)
         - bash: echo $(Agent.MachineName) and $(Agent.OS)
         - bash: echo $(Build.BuildNumber)
         - bash: echo $(Build.BuildId) and $(Build.Repository.Name)
         - bash: echo $(Build.SourceBranchName)
-        - bash: echo $(Build.SourcesDirectory) and $(Build.TriggeredBy.BuildNumber)
+        - bash: echo $(Build.SourcesDirectory) and $(Build.SourceVersion)
         - bash: echo $(Build.ArtifactStagingDirectory)
         - bash: echo $(System.DefaultWorkingDirectory)
         - bash: ls -R $(System.DefaultWorkingDirectory)
