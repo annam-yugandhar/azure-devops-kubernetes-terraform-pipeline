@@ -26,7 +26,7 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: echo "deploy job in dev"
+          - script: echo "deploy job in dev-stage"
 
 - stage: QaDeploy
   jobs:
@@ -36,4 +36,4 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: echo "deploy job in qa"
+          - script: echo "deploy job in Qa-stage"
