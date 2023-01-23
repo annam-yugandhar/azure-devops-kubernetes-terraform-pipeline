@@ -12,26 +12,28 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-  - stage: Build
-    jobs:
-    - job: first_job
-       steps:
-        - bash: echo Do a Build job
+- stage: Build
+  jobs:
+  - job: first_job
+    steps:
+    - bash: echo Do a Build job
 
-  - stage: DevDeploy
-    jobs:
-    - deployment: DevDeployjob
-      environment: Dev
-      strategy:
-        runOnce:
-          deploy:
-            script: echo "deploy job in dev"
+- stage: DevDeploy
+  jobs:
+  - deployment: DevDeployjob
+    environment: Dev
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "deploy job in dev"
 
-  - stage: QaDeploy
-    jobs:
-    - deployment: QaDeployjob
-      environment: Qa
-      strategy:
-        runOnce:
-          deploy:
-            script: echo "deploy job in qa"
+- stage: QaDeploy
+  jobs:
+  - deployment: QaDeployjob
+    environment: Qa
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "deploy job in qa"
