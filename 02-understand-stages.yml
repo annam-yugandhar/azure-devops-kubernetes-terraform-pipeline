@@ -22,7 +22,7 @@ stages:
     jobs:
       - job: Dev_Job
         steps:
-        - bash: echo first job in $(Dev)-Deploy stage
+        - bash: echo first job in $(env)-Deploy stage
 
   - stage: QaDeploy
     variables:
@@ -31,7 +31,7 @@ stages:
     jobs:
       - job: Qa_Job
         steps:
-        - bash: echo first job in $(Qa)-Deploy stage
+        - bash: echo first job in $(env)-Deploy stage
 
   - stage: ProdDeploy
     variables:
@@ -42,5 +42,5 @@ stages:
     jobs:
       - job: Prod_Job
         steps:
-          - bash: echo first job in $(Prod)-Deploy stage
+          - bash: echo first job in $(env)-Deploy stage
 
