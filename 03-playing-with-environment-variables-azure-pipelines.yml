@@ -2,7 +2,7 @@ trigger:
 - master
 
 strategy:
-- matrix:
+  matrix:
    linux:
      operatingSystem: 'ubuntu-lates'
    mac:
