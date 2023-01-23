@@ -21,6 +21,23 @@ stages:
         - bash: echo $(Build.ArtifactStagingDirectory)
         - bash: echo $(System.DefaultWorkingDirectory)
         - bash: ls -R $(System.DefaultWorkingDirectory)
+        - bash: ls -R $(Build.ArtifactStagingDirectory)
+
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '$(System.DefaultWorkingDirectory)'
+            Contents: |
+              **/*.yml
+              **/*.tf
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+        - bash: ls -R $(Build.ArtifactStagingDirectory)
+
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'azure'
+
   #   - job: Second_job
   #     steps:
   #       - bash: echo second job in Build stage
